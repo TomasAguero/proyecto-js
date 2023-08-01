@@ -1,7 +1,7 @@
 
 // capturar entradas mediante prompt()
-const num1 = Number(prompt("Ingresa el primer número:"));
-const num2 = Number(prompt("Ingresa el segundo número:"));
+const num1 = Number(prompt("Ingresa el primer número: (Suma-Resta-Division-Porcentaje)"));
+const num2 = Number(prompt("Ingresa el segundo número: (Suma-Resta-Division-Porcentaje)"));
 
 // declarar variables y objetos necesarios
 const datos = {

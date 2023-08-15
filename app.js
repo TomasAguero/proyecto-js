@@ -1,63 +1,69 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const productsList = document.getElementById("products");
+  const cartItems = document.getElementById("cart-items");
+  const cartTotal = document.getElementById("cart-total");
+  const emptyCartButton = document.getElementById("empty-cart");
 
-// capturar entradas mediante prompt()
-const num1 = Number(prompt("Ingresa el primer número: (Suma-Resta-Division-Porcentaje)"));
-const num2 = Number(prompt("Ingresa el segundo número: (Suma-Resta-Division-Porcentaje)"));
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// declarar variables y objetos necesarios
-const datos = {
-  numeros: [num1, num2],
-};
+  function updateCartUI() {
+    cartItems.innerHTML = "";
+    let total = 0;
 
-// crear funciones para realizar operaciones
-function suma(a, b) {
-  return a + b;
-}
+    cart.forEach((item) => {
+      const li = document.createElement("li");
+      li.textContent = `Producto ${item.id} - $${item.price}`;
+      cartItems.appendChild(li);
+      total += item.price;
+    });
 
-function resta(a, b) {
-  return a - b;
-}
-
-function division(a, b) {
-  if (b !== 0) {
-    return a / b;
-  } else {
-    return "Error: No se puede dividir por cero.";
+    cartTotal.textContent = total.toFixed(2);
   }
-}
 
-function porcentaje(a, b) {
-  return (a * b) / 100;
-}
+  emptyCartButton.addEventListener("click", () => {
+    cart.length = 0;
+    updateCartUI();
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Carrito vaciado");
+  });
 
-// realizar operaciones
-const resultadoSuma = suma(num1, num2);
-const resultadoResta = resta(num1, num2);
-const resultadoDivision = division(num1, num2);
-const resultadoPorcentaje = porcentaje(num1, num2);
+  const productsData = [
+    { id: 1, name: "TERMO + MATE STANLEY", price: 18000, image: "producto1.jpg" },
+    { id: 2, name: "TERMO + MATE STANLEY METALIZADOS", price: 20000, image: "producto2.jpg" },
+    { id: 3, name: "PROMO X3 TERMOS METALIZADOS!", price: 40000, image: "producto3.jpg" },
 
-// realizar una salida (resultados)
-console.log("Resultados:");
-console.log("Suma:", resultadoSuma);
-console.log("Resta:", resultadoResta);
-console.log("División:", resultadoDivision);
-console.log("Porcentaje:", resultadoPorcentaje);
+  ];
 
-// arrays, métodos de búsqueda y filtrado sobre el Array
-const arrayNumeros = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  productsData.forEach((product) => {
+    const productElement = document.createElement("div");
+    productElement.classList.add("product");
+    productElement.innerHTML = `
+      <img src="img/${product.image}" alt="${product.name}">
+      <h3>${product.name} - $${product.price}</h3>
+      <button class="add-to-cart" data-id="${product.id}" data-price="${product.price}">Agregar al carrito</button>
+    `;
+    productsList.appendChild(productElement);
+  });
 
-// metodo de busqueda
-function buscarNumero(numero) {
-  return arrayNumeros.includes(numero);
-}
+  const addToCartButtons = document.querySelectorAll(".add-to-cart");
 
-// metodo de filtrado
-function filtrarNumerosMayoresA(valor) {
-  return arrayNumeros.filter(num => num > valor);
-}
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const productId = parseInt(event.target.getAttribute("data-id"));
+      const productPrice = parseFloat(event.target.getAttribute("data-price"));
 
-// uso de los metodos de busqueda y filtrado
-const numeroBuscado = 50;
-console.log("El número", numeroBuscado, "se encuentra en el array:", buscarNumero(numeroBuscado));
+      const selectedProduct = productsData.find(
+        (product) => product.id === productId
+      );
 
-const valorFiltro = 35;
-console.log("Números mayores a", valorFiltro, ":", filtrarNumerosMayoresA(valorFiltro));
+      if (selectedProduct) {
+        cart.push({ id: selectedProduct.id, price: productPrice });
+        updateCartUI();
+        localStorage.setItem("cart", JSON.stringify(cart));
+        alert(`Producto ${selectedProduct.name} agregado al carrito`);
+      }
+    });
+  });
+
+  updateCartUI();
+});

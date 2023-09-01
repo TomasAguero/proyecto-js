@@ -1,0 +1,220 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #000000;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 36px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+/* Estilos de productos */
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.product img {
+  max-width: 100%;
+  height: 400px;
+}
+/* FAQ */
+.faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px;
+}
+
+.question {
+  width: 80%;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.question h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.question p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.question ul {
+  text-align: left;
+  margin-left: 30px;
+  font-size: 18px;
+}
+
+.question li {
+  margin-bottom: 5px;
+}
+
+/* Estilos del carrito */
+#cart {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  border-left: 1px solid #ccc;
+  padding: 20px;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+}
+
+#cartToggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#cartToggle:hover {
+  background-color: #555;
+}
+
+/* Estilos de la tabla del carrito */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.btn {
+  padding: 5px 10px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+}
+
+.btn-success {
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #46b8da;
+}
+
+/* Estilos de la sección de confirmación */
+#confirmation {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #dff0d8;
+  border: 1px solid #c3e6cb;
+  color: #3c763d;
+}
+
+/* Estilos de botones */
+.btn-primary {
+  background-color: #337ab7;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #286090;
+}
+
+/* Estilos de tabla de productos */
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #f2f2f2;
+}
+
+/* Estilos de botones dentro de la tabla */
+.btn-danger.btn-remove {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+}
+
+.btn-danger.btn-remove:hover {
+  background-color: #c9302c;
+}
+
+.btn-success.btn-buy {
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+}
+
+.btn-success.btn-buy:hover {
+  background-color: #46b8da;
+}
